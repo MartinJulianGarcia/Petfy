@@ -33,6 +33,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  // Ir al historial de paseos
+  goToHistory(): void {
+    this.router.navigate(['/history']);
+  }
+
   // Solicitar paseo
   goToVeterinaries(): void {
     this.router.navigate(['/request']);

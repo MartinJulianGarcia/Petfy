@@ -68,8 +68,10 @@
 .header-right {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
+.history-icon,
 .profile-icon {
   width: 40px;
   height: 40px;
@@ -82,6 +84,7 @@
   transition: background-color 0.2s ease;
 }
 
+.history-icon:hover,
 .profile-icon:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }

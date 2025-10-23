@@ -43,5 +43,15 @@ export class ProfileComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  // Ir al formulario para ser paseador
+  goToWalkerApplication(): void {
+    this.router.navigate(['/walker-application']);
+  }
+
+  // Ir al historial de paseos
+  goToHistory(): void {
+    this.router.navigate(['/history']);
+  }
 }
 

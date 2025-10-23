@@ -34,6 +34,18 @@ export const routes: Routes = [
     loadComponent: () => import('./components/requests/requests.component').then(m => m.RequestsComponent)
   },
   {
+    path: 'chat',
+    loadComponent: () => import('./components/chat/chat.component').then(m => m.ChatComponent)
+  },
+  {
+    path: 'walker-application',
+    loadComponent: () => import('./components/walker-application/walker-application.component').then(m => m.WalkerApplicationComponent)
+  },
+  {
+    path: 'history',
+    loadComponent: () => import('./components/history/history.component').then(m => m.HistoryComponent)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'

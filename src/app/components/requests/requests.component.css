@@ -80,7 +80,15 @@
   color: #1e40af;
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.auto-confirm-info {
+  color: #6b7280;
+  font-size: 12px;
+  font-style: italic;
   margin-bottom: 16px;
+  display: block;
 }
 
 /* Lista de solicitudes */
@@ -123,8 +131,28 @@
   background-color: #1e3a8a;
 }
 
+.request-item.confirmed.selected {
+  background-color: #10b981;
+  color: white;
+  border: 2px solid #34d399;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.request-item.confirmed.selected:hover {
+  background-color: #059669;
+}
+
 .request-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.walker-info {
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 500;
 }
 
 .message-button {

@@ -19,6 +19,7 @@
     <!-- Paseos a confirmar -->
     <div class="section">
       <h3 class="section-title">Paseos a confirmar:</h3>
+      <small class="auto-confirm-info">Se confirmarán automáticamente en 10 segundos</small>
       <div class="requests-list">
         <div 
           class="request-item"
@@ -42,8 +43,11 @@
           [class.selected]="selectedRequest === request"
           (click)="selectRequest(request)"
           *ngFor="let request of confirmedRequests">
-          <span class="request-info">{{ formatDate(request.date) }} - {{ request.startTime }}</span>
-          <button class="message-button">
+          <span class="request-info">
+            {{ formatDate(request.date) }} - {{ request.startTime }}
+            <span class="walker-info">paseador: {{ request.walker }}</span>
+          </span>
+          <button class="message-button" (click)="openChat(request); $event.stopPropagation()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

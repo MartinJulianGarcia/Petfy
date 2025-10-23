@@ -148,9 +148,15 @@ export class RequestComponent implements OnInit {
         // Actualizar solicitud existente
         const requestIndex = existingRequests.findIndex((req: any) => req.id === this.editingRequestId);
         if (requestIndex !== -1) {
-          existingRequests[requestIndex] = { ...request, id: this.editingRequestId };
+          // Si se está modificando una solicitud confirmada, volverla a pending
+          const updatedRequest = { 
+            ...request, 
+            id: this.editingRequestId,
+            status: 'pending' // Siempre volver a pending cuando se modifica
+          };
+          existingRequests[requestIndex] = updatedRequest;
           localStorage.setItem('walkRequests', JSON.stringify(existingRequests));
-          alert('¡Paseo modificado exitosamente!');
+          alert('¡Paseo modificado exitosamente! Volverá a confirmarse automáticamente.');
         }
       } else {
         // Crear nueva solicitud
