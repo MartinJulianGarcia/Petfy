@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any = null;
+  isWalker = false;
 
   constructor(
     private router: Router,
@@ -26,6 +27,9 @@ export class ProfileComponent implements OnInit {
       // Si no hay usuario logueado, redirigir al login
       this.router.navigate(['/login']);
     }
+
+    // Verificar si es paseador
+    this.isWalker = this.authService.isWalker();
   }
 
   // Volver a la página anterior

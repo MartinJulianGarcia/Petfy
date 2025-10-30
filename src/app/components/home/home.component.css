@@ -185,6 +185,54 @@
   border-color: #9ca3af;
 }
 
+/* Botón con estilo secundario pero con icono */
+.primary-button.secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #60a5fa;
+  border: 2px solid #60a5fa;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-button.secondary:hover {
+  background-color: #eff6ff;
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* Botón de paseador */
+.walker-section {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.walker-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.walker-button:hover {
+  background-color: #059669;
+}
+
 /* Sección de estadísticas */
 .stats-section {
   display: flex;

@@ -47,10 +47,38 @@ export class HistoryComponent implements OnInit {
   loadFinalizedWalks(): void {
     // Cargar paseos finalizados desde localStorage
     const allRequests = JSON.parse(localStorage.getItem('walkRequests') || '[]');
-    // Por ahora, no mostrar ningún paseo hasta que se implemente un sistema real de finalización
-    // Solo mostrar paseos que tengan un campo 'isCompleted' como true
-    this.finalizedWalks = allRequests.filter((request: any) => request.isCompleted === true);
+    // Filtrar paseos con isCompleted como true
+    const realWalks = allRequests.filter((request: any) => request.isCompleted === true);
+    
+    // Si no hay paseos reales, usar paseos de ejemplo por defecto
+    if (realWalks.length === 0) {
+      this.finalizedWalks = this.getDefaultWalks();
+    } else {
+      this.finalizedWalks = realWalks;
+    }
+    
     this.filteredWalks = [...this.finalizedWalks];
+  }
+
+  getDefaultWalks(): WalkHistory[] {
+    return [
+      {
+        id: 1,
+        date: '2025-10-20',
+        time: '10:00',
+        walker: 'Martin',
+        status: 'finalized',
+        address: 'Av. Corrientes 1234, CABA'
+      },
+      {
+        id: 2,
+        date: '2025-10-18',
+        time: '16:30',
+        walker: 'Azul',
+        status: 'finalized',
+        address: 'Av. Santa Fe 5678, CABA'
+      }
+    ];
   }
 
   filterWalks(): void {

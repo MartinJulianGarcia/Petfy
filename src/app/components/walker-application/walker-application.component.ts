@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-walker-application',
@@ -19,7 +20,7 @@ export class WalkerApplicationComponent implements OnInit {
 
   selectedFileName = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -52,11 +53,14 @@ export class WalkerApplicationComponent implements OnInit {
       return;
     }
 
-    // Aquí se podría enviar la solicitud a un backend
-    // Por ahora solo mostramos un mensaje de confirmación
-    alert('¡Solicitud enviada exitosamente! Te contactaremos pronto para evaluar tu aplicación.');
-    
-    // Redirigir al perfil
-    this.router.navigate(['/profile']);
+    // Cambiar el rol del usuario a paseador
+    if (this.authService.setWalkerRole()) {
+      alert('¡Bienvenido como paseador! Ahora puedes ver las solicitudes de los clientes.');
+      
+      // Redirigir a la página de paseador
+      this.router.navigate(['/walker-requests']);
+    } else {
+      alert('Error al cambiar el rol. Por favor intenta de nuevo.');
+    }
   }
 }

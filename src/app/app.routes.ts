@@ -46,6 +46,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/history/history.component').then(m => m.HistoryComponent)
   },
   {
+    path: 'walker-requests',
+    loadComponent: () => import('./components/walker-requests/walker-requests.component').then(m => m.WalkerRequestsComponent)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'

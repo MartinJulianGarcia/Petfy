@@ -167,6 +167,18 @@
   color: #1f2937;
 }
 
+.role-value {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: #f3f4f6;
+}
+
+.role-value.walker-role {
+  background-color: #10b981;
+  color: white;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {

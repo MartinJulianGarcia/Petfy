@@ -62,10 +62,14 @@
         <span class="label">Miembro desde:</span>
         <span class="value">Octubre 2025</span>
       </div>
+      <div class="detail-item">
+        <span class="label">Rol:</span>
+        <span class="value role-value" [class.walker-role]="isWalker">{{ isWalker ? 'Paseador' : 'Cliente' }}</span>
+      </div>
     </div>
 
-    <!-- Botón para ser paseador -->
-    <div class="walker-section">
+    <!-- Botón para ser paseador (solo si no es paseador) -->
+    <div class="walker-section" *ngIf="!isWalker">
       <button class="walker-button" (click)="goToWalkerApplication()">
         Quiero ser paseador
       </button>

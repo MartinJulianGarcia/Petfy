@@ -9,7 +9,7 @@
       </button>
     </div>
     <div class="header-center">
-      <h1>Chat</h1>
+      <h1>{{ isWalker ? 'Chat con Cliente' : 'Chat con ' + walkerName }}</h1>
     </div>
     <div class="header-right">
       <button class="options-button">
@@ -20,14 +20,14 @@
     </div>
   </div>
 
-  <!-- Información del paseador -->
+  <!-- Información del paseador/cliente -->
   <div class="walker-info-bar">
     <div class="walker-avatar">
-      <span class="avatar-text">{{ walkerName.charAt(0) }}</span>
+      <span class="avatar-text">{{ isWalker ? 'C' : walkerName.charAt(0) }}</span>
     </div>
     <div class="walker-details">
-      <h3 class="walker-name">{{ walkerName }}</h3>
-      <span class="walker-status">Paseador asignado</span>
+      <h3 class="walker-name">{{ isWalker ? 'Cliente' : walkerName }}</h3>
+      <span class="walker-status">{{ isWalker ? 'Cliente' : 'Paseador asignado' }}</span>
     </div>
     <div class="walker-actions">
       <button class="action-button">

@@ -5,6 +5,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
+  role?: 'customer' | 'walker';
 }
 
 export interface LoginCredentials {
@@ -99,7 +100,8 @@ export class AuthService {
     const newUser: User = {
       username: userData.username.trim(),
       email: userData.email.trim(),
-      password: userData.password
+      password: userData.password,
+      role: 'customer' // Por defecto todos son clientes
     };
 
     // Guardar usuario
@@ -162,6 +164,32 @@ export class AuthService {
   // Verificar si hay usuario logueado
   isLoggedIn(): boolean {
     return this.currentUserSubject.value !== null;
+  }
+
+  // Cambiar rol del usuario a walker
+  setWalkerRole(): boolean {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser) return false;
+
+    // Actualizar rol en el array de usuarios
+    const users = this.getStoredUsers();
+    const userIndex = users.findIndex(u => u.email === currentUser.email);
+    if (userIndex !== -1) {
+      users[userIndex].role = 'walker';
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // Actualizar usuario actual
+    currentUser.role = 'walker';
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    this.currentUserSubject.next(currentUser);
+
+    return true;
+  }
+
+  // Verificar si el usuario es paseador
+  isWalker(): boolean {
+    return this.getCurrentUser()?.role === 'walker';
   }
 }
 

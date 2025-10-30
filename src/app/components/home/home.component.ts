@@ -3,6 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+interface User {
+  username: string;
+  email: string;
+  role?: 'customer' | 'walker';
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -12,6 +18,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeComponent implements OnInit {
   currentUser: any = null;
+  isWalker = false;
 
   constructor(
     private router: Router,
@@ -26,6 +33,9 @@ export class HomeComponent implements OnInit {
       // Si no hay usuario logueado, redirigir al login
       this.router.navigate(['/login']);
     }
+
+    // Verificar si es paseador
+    this.isWalker = this.authService.isWalker();
   }
 
   // Ir al perfil del usuario
@@ -43,9 +53,14 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/request']);
   }
 
-  // Ver mis solicitudes
+  // Ver mis solicitudes (como cliente)
   createEmergencyRequest(): void {
     this.router.navigate(['/requests']);
+  }
+
+  // Ver peticiones como paseador
+  goToWalkerRequests(): void {
+    this.router.navigate(['/walker-requests']);
   }
 
   // Cerrar sesión
